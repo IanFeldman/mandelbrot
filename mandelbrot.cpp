@@ -2,13 +2,14 @@
 #include <vector>
 #include "mandelbrot.h"
 #include "renderer.h"
+#include <iostream>
 
 Mandelbrot::Mandelbrot()
     :mRunning(true)
-    ,mWorldSize((SDL_Point){1500, 1500})
+    ,mWorldSize((SDL_Point){500, 500})
     ,mMin(-2)
     ,mMax(2)
-    ,mMaxIterations(500)
+    ,mMaxIterations(100)
     ,mDivergence(16)
     ,mCamMoveSpeed(10.0f)
     ,mCamZoomSpeed(5.0f)
@@ -70,6 +71,10 @@ void Mandelbrot::ProcessUpdate() {
                     case SDLK_x:
                         mWorldSize.x -= mCamZoomSpeed;
                         mWorldSize.y -= mCamZoomSpeed;
+                        break;
+                    case SDLK_SPACE:
+                        std::cout << "World Size: " << mWorldSize.x << ", " << mWorldSize.y << " \n";
+                        std::cout << "Camera Position: " << mRenderer->GetCamPos().x << ", " << mRenderer->GetCamPos().y << " \n";
                         break;
                     default:
                         break;

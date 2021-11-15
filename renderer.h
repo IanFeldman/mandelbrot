@@ -13,6 +13,7 @@ public:
     SDL_Renderer* GetRenderer() { return mRenderer; }
     SDL_Point GetWindowSize() { return mWindowSize; }
     
+    SDL_Point GetCamPos() { return mCameraPos; }
     void MoveCam(SDL_Point movement);
     
 protected:
